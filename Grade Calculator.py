@@ -10,16 +10,20 @@ def marks_calculator():
 
 def grade_calculator(total_marks):
     percentage = (total_marks / 100) * 100  # Assuming total marks are out of 100
-    if percentage >= 90:
-        return 'A'
-    elif 80 <= percentage < 90:
-        return 'B'
-    elif 70 <= percentage < 80:
-        return 'C'
-    elif 60 <= percentage < 70:
-        return 'D'
+    if percentage <= 100 and percentage >= 80:
+        return 'Your Point is 5.00 and Grade is A+'
+    elif percentage < 79 and percentage >= 70:
+        return 'Your Point is 4.00 and Grade is A'
+    elif percentage < 69 and percentage >= 60:
+        return 'Your Point is 3.50 and Grade is A-'
+    elif percentage < 59 and percentage >= 50:
+        return 'Your Point is 3.00 and Grade is B'
+    elif percentage < 49 and percentage >= 40:
+        return 'Your Point is 2.00 and Grade is C'
+    elif percentage < 39 and percentage >= 33:
+        return 'Your Point is 1.00 and Grade is D'
     else:
-        return 'F'
+        return 'Your Point is 0.00 and Grade is F'
 
 
 
