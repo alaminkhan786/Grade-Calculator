@@ -1,40 +1,52 @@
-def marks_calculator():
-    attendance = float(input("Enter attendance marks (out of 10): "))
-    lab = float(input("Enter lab marks (out of 20): "))
-    mid = float(input("Enter mid-term marks (out of 30): "))
-    final = float(input("Enter final exam marks (out of 40): "))
+def marks_calculator(attendance, lav, mid_term, final):
+    total_marks = attendance + lav + mid_term + final
 
-    total_marks = attendance + lab + mid + final
-    return total_marks
+    if attendance <= 10 and attendance >= 0:
+        if lav <= 20 and lav >= 0:
+            if mid_term <= 30 and mid_term >= 0:
+                if final <= 40 and final >= 0:
+                    return total_marks
+                else:
+                    print('Invalid Marks!\nPlease Try again later.')
+            else:
+                print('Invalid Marks!\nPlease Try again later.')
+        else:
+            print('Invalid Marks!\nPlease Try again later.')
+    else:
+        print('Invalid Marks!\nPlease Try again later.')
 
 
 def grade_calculator(total_marks):
-    percentage = (total_marks / 100) * 100  # Assuming total marks are out of 100
-    if percentage <= 100 and percentage >= 80:
-        return 'Your Point is 5.00 and Grade is A+'
-    elif percentage < 79 and percentage >= 70:
-        return 'Your Point is 4.00 and Grade is A'
-    elif percentage < 69 and percentage >= 60:
-        return 'Your Point is 3.50 and Grade is A-'
-    elif percentage < 59 and percentage >= 50:
-        return 'Your Point is 3.00 and Grade is B'
-    elif percentage < 49 and percentage >= 40:
-        return 'Your Point is 2.00 and Grade is C'
-    elif percentage < 39 and percentage >= 33:
-        return 'Your Point is 1.00 and Grade is D'
+    if total_marks <= 100 and total_marks >= 80:
+        return 'Your Grade is A+'
+    elif total_marks <= 79 and total_marks >= 70:
+        return 'Your Grade is A'
+    elif total_marks <= 69 and total_marks >= 60:
+        return 'Your Grade is A-'
+    elif total_marks <= 59 and total_marks >= 50:
+        return 'Your Grade is B'
+    elif total_marks <= 49 and total_marks >= 40:
+        return 'Your Grade is C'
+    elif total_marks <= 39 and total_marks >= 33:
+        return 'Your Grade is D'
+    elif total_marks <= 32 and total_marks >= 0:
+        return 'Your Grade is F'
     else:
-        return 'Your Point is 0.00 and Grade is F'
+        print('Invalid Marks!\nPlease Try again later.')
 
 
-
-N = int(input("Enter the number of students: "))
+N = int(input("Enter the total number: "))
 
 for i in range(N):
-    print(f"\nStudent {i + 1}:")
+    print(f"\nStudent: {i + 1}")
 
-    total_marks = marks_calculator()
-
-    grade = grade_calculator(total_marks)
-
-    print(f"Total Marks: {total_marks}")
-    print(f"Grade: {grade}")
+    attendance = float(input("Enter your Attendance marks: "))
+    lav = float(input("Enter your Lav marks: "))
+    mid_term = float(input("Enter your Mid-Term exam marks: "))
+    final = float(input("Enter your Final exam marks: "))
+    total_marks = marks_calculator(attendance, lav, mid_term, final)
+    if total_marks is not None:
+        grade = grade_calculator(total_marks)
+        
+        print("total marks:", total_marks)
+        print("Grade:", grade)
